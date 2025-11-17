@@ -1,1 +1,81 @@
 # Chaitanya-Popuri.github.io
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chaitanya Popuri — Portfolio</title>
+  <style>
+    :root{--accent:#0b72ef;--maxW:900px}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;margin:0;line-height:1.5;color:#111}
+    .wrap{max-width:var(--maxW);margin:32px auto;padding:0 16px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    header h1{margin:0;font-size:1.25rem}
+    .tag{color:#555;margin-top:6px}
+    .grid{display:grid;grid-template-columns:1fr;gap:20px;margin-top:24px}
+    .card{border-radius:10px;padding:18px;background:#fbfbff;border:1px solid #eee}
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{padding:6px 10px;border-radius:999px;border:1px solid #e6e6e6;font-size:0.9rem}
+    .projects li{margin-bottom:10px}
+    .cta{display:inline-block;margin-top:12px;padding:10px 14px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none}
+    footer{color:#666;font-size:0.9rem;margin-top:26px}
+    @media(min-width:760px){ .grid{grid-template-columns: 1fr 320px} header h1{font-size:1.5rem} }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div>
+        <h1>Chaitanya Popuri</h1>
+        <div class="tag">Full-Stack Developer • Angular • Java • Cloud</div>
+      </div>
+      <nav>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="grid" aria-label="Main content">
+      <div>
+        <div class="card">
+          <h2>About</h2>
+          <p>I am a Frontend Developer with strong experience in building fast, scalable, and user-friendly web applications using Angular and React. I specialize in developing clean UI components, implementing responsive designs, and creating seamless user experiences. With a solid understanding of modern JavaScript, TypeScript, and frontend architecture, I enjoy turning business requirements into high-quality, maintainable code. I am always learning new technologies and passionate about delivering efficient, reliable, and intuitive solutions.</p>
+          <a class="cta" href="/resume.pdf" download>Download Resume (PDF)</a>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <h3>Experience & Projects</h3>
+          <ul class="projects">
+            <li><strong>Project A</strong> — short description; tech used; link.</li>
+            <li><strong>Project B</strong> — short description; your role; outcome (metrics).</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h3>Skills</h3>
+          <div class="skills">
+            <span class="chip">JavaScript</span>
+            <span class="chip">React</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">Docker</span>
+            <span class="chip">AWS</span>
+          </div>
+        </div>
+
+        <div id="contact" class="card" style="margin-top:16px">
+          <h3>Contact</h3>
+          <p>Phone: <a href="tel:+1234567890">+1 314 591 2653</a></p>
+          <p>Email: <a href="mailto:you@example.com">popurichaitanya123@gmail.com</a></p>
+          <!-- Replace with a form service if you don't want to publish email/phone -->
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      © 2025 Your Name — <small>Built with HTML & CSS • Hosted on your choice</small>
+    </footer>
+  </main>
+</body>
+</html>
