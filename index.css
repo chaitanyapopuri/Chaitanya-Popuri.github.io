@@ -127,3 +127,113 @@
 .logo-slider:hover .logo-track {
   animation-play-state: paused;
 }
+
+/* ===== SLIDER BASE ===== */
+
+.logo-slider {
+  position: relative;
+  margin-top: 16px;
+}
+
+.logo-viewport {
+  overflow: hidden;
+}
+
+/* Track */
+.logo-track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  animation: scrollLeft 25s linear infinite;
+}
+
+/* Images */
+.logo-track img {
+  width: 260px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Hover zoom */
+.logo-track img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+/* ===== CENTER ZOOM EFFECT ===== */
+
+.logo-viewport:hover img {
+  transform: scale(0.9);
+  opacity: 0.6;
+}
+
+.logo-viewport img:hover {
+  transform: scale(1.15);
+  opacity: 1;
+  z-index: 2;
+}
+
+/* ===== AUTO SCROLL ===== */
+
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Reverse scroll class */
+.reverse {
+  animation-direction: reverse;
+}
+
+/* Pause on hover */
+.logo-slider:hover .logo-track {
+  animation-play-state: paused;
+}
+
+/* ===== FADE EDGES ===== */
+
+.fade {
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.fade-left {
+  left: 0;
+  background: linear-gradient(to right, #fbfbff, transparent);
+}
+
+.fade-right {
+  right: 0;
+  background: linear-gradient(to left, #fbfbff, transparent);
+}
+
+/* ===== ARROWS ===== */
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  font-size: 22px;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-radius: 8px;
+  z-index: 4;
+}
+
+.arrow.left { left: 10px; }
+.arrow.right { right: 10px; }
+
+.arrow:hover {
+  background: rgba(0,0,0,0.85);
+}
+
