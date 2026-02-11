@@ -252,6 +252,12 @@
   animation: scroll 20s linear infinite;
 }
 
+@media(min-width:760px){
+  .grid{
+    grid-template-columns: 1fr 320px;
+  }
+}
+
 /* Images */
 .slide-track img {
   width: 260px;
