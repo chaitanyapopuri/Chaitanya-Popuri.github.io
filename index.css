@@ -245,10 +245,10 @@
   width: 100%;
 }
 
-/* Track 
+/* Track */
 .slide-track {
   display: flex;
-  width: calc(260px * 8); /* 8 images total 
+  width: calc(260px * 8); /* 8 images total */
   animation: scroll 20s linear infinite;
 }
 
