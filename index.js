@@ -1,5 +1,4 @@
-
-/* Your Uploaded Images */
+/* Image List */
 const images = [
   "image1.webp",
   "image2.webp",
@@ -7,45 +6,33 @@ const images = [
   "image4.webp"
 ];
 
-/* Pagination Settings */
-let currentPage = 0;
-const imagesPerPage = 2; // 2 images per page
+const slidesContainer = document.getElementById("slides");
 
-function displayImages() {
-  const gallery = document.getElementById("imageGallery");
+let index = 0;
 
-  if (!gallery) return; // prevents null error
-
-  gallery.innerHTML = "";
-
-  const start = currentPage * imagesPerPage;
-  const end = start + imagesPerPage;
-
-  images.slice(start, end).forEach(function (src) {
+/* Load Images into Slider */
+function loadSlides() {
+  images.forEach(function (src) {
     const img = document.createElement("img");
     img.src = src;
-    gallery.appendChild(img);
+    slidesContainer.appendChild(img);
   });
 }
 
-function nextPage() {
-  if ((currentPage + 1) * imagesPerPage < images.length) {
-    currentPage++;
-    displayImages();
+/* Auto Slide Function */
+function autoSlide() {
+  index++;
+
+  if (index >= images.length) {
+    index = 0;
   }
+
+  slidesContainer.style.transform =
+    "translateX(-" + index * 100 + "%)";
 }
 
-function prevPage() {
-  if (currentPage > 0) {
-    currentPage--;
-    displayImages();
-  }
-}
-
-/* Load images on page start */
-window.onload = displayImages;
-
-
-/* Initial Load */
-displayImages();
-
+/* Init */
+window.onload = function () {
+  loadSlides();
+  setInterval(autoSlide, 3000); // change every 3 sec
+};
