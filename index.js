@@ -116,73 +116,47 @@
 
 // });
 
-
 window.addEventListener("DOMContentLoaded", () => {
 
-  const cards = document.querySelectorAll(".cf-card");
   const track = document.getElementById("cfTrack");
+  const cards = document.querySelectorAll(".cf-card");
   const leftBtn = document.querySelector(".cf-arrow.left");
   const rightBtn = document.querySelector(".cf-arrow.right");
 
-  if (!cards.length) return;
+  if (!track) return;
 
   let index = 1;
-  let autoSlideInterval;
 
   function updateCarousel() {
+
     cards.forEach((card, i) => {
-      card.classList.remove("active", "side");
+      card.classList.remove("active");
 
       if (i === index) {
         card.classList.add("active");
-      } else {
-        card.classList.add("side");
       }
     });
 
-    const offset = (index - 1) * 250;
+    const offset = (index - 1) * 260;
     track.style.transform = `translateX(-${offset}px)`;
   }
 
-  /* ===== AUTO SLIDE ===== */
-
-  function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
-      index++;
-
-      if (index >= cards.length) {
-        index = 0; // loop
-      }
-
-      updateCarousel();
-    }, 3000); // 3 sec
-  }
-
-  function stopAutoSlide() {
-    clearInterval(autoSlideInterval);
-  }
-
-  /* ===== ARROWS ===== */
+  /* Arrows */
 
   rightBtn.onclick = () => {
     index++;
-    if (index >= cards.length) index = 0;
+    if (index >= cards.length) index = cards.length - 1;
     updateCarousel();
   };
 
   leftBtn.onclick = () => {
     index--;
-    if (index < 0) index = cards.length - 1;
+    if (index < 0) index = 0;
     updateCarousel();
   };
 
-  /* Pause on hover */
-  track.addEventListener("mouseenter", stopAutoSlide);
-  track.addEventListener("mouseleave", startAutoSlide);
-
-  /* Init */
   updateCarousel();
-  startAutoSlide();
 
 });
+
 
