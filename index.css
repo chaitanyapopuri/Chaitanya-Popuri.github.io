@@ -11,7 +11,7 @@
 /* Track */
 .slide-track {
   display: flex;
-  width: calc(160px * 8); /* 8 images total */
+  width: calc(60px * 8); /* 8 images total */
   animation: scroll 20s linear infinite;
 }
 
