@@ -237,3 +237,37 @@
   background: rgba(0,0,0,0.85);
 }
 
+/* ===== SLIDER BASE ===== */
+
+.slider {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* Track */
+.slide-track {
+  display: flex;
+  width: calc(260px * 8); /* 8 images total */
+  animation: scroll 20s linear infinite;
+}
+
+/* Images */
+.slide-track img {
+  width: 260px;
+  height: 180px;
+  object-fit: cover;
+  margin-right: 18px;
+  border-radius: 12px;
+}
+
+/* Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-260px * 4));
+  }
+}
+
