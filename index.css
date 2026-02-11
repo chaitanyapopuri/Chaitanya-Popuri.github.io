@@ -28,6 +28,57 @@
   flex-shrink: 0;
 }
 
+/* Carousel Container */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  margin-top: 14px;
+}
+
+/* Track */
+.carousel-track {
+  display: flex;
+  gap: 12px;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Images */
+.carousel-track img {
+  width: 260px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+  transition: transform 0.3s;
+}
+
+.carousel-track img:hover {
+  transform: scale(1.05);
+}
+
+/* Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 22px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 6px;
+  z-index: 10;
+}
+
+.arrow.left { left: 5px; }
+.arrow.right { right: 5px; }
+
+.arrow:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+
 
 .image-gallery img {
   width: 100%;

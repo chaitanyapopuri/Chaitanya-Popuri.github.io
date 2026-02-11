@@ -133,16 +133,27 @@
             <li><strong>Project B</strong> — short description; your role; outcome (metrics).</li>
           </ul>
         </div>
-
-       <div class="card" style="margin-top:16px">
+<div class="card" style="margin-top:16px">
   <h3>Images</h3>
 
-  <!-- Auto Slider -->
-  <div class="slider">
-    <div class="slides" id="slides"></div>
+  <div class="carousel">
+    
+    <!-- Left Arrow -->
+    <button class="arrow left" onclick="slideLeft()">&#10094;</button>
+
+    <!-- Slides Track -->
+    <div class="carousel-track" id="carouselTrack">
+      <img src="image1.webp">
+      <img src="image2.webp">
+      <img src="image3.webp">
+      <img src="image4.webp">
+    </div>
+
+    <!-- Right Arrow -->
+    <button class="arrow right" onclick="slideRight()">&#10095;</button>
+
   </div>
 
-</div>
 
 
       </div>
@@ -159,7 +170,7 @@
           </div>
         </div>
 
-        <div id="contact" class="card" style="margin-top:16px">
+/div>        <div id="contact" class="card" style="margin-top:16px">
           <h3>Contact</h3>
           <p>Phone: <a href="tel:+1234567890">+1 314 591 2653</a></p>
           <p>Email: <a href="mailto:you@example.com">popurichaitanya123@gmail.com</a></p>

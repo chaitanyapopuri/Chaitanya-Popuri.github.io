@@ -1,38 +1,41 @@
-/* Image List */
-const images = [
-  "image1.webp",
-  "image2.webp",
-  "image3.webp",
-  "image4.webp"
-];
+const track = document.getElementById("carouselTrack");
 
-const slidesContainer = document.getElementById("slides");
+let scrollAmount = 0;
+const slideWidth = 272; // image width + gap
 
-let index = 0;
-
-/* Load Images into Slider */
-function loadSlides() {
-  images.forEach(function (src) {
-    const img = document.createElement("img");
-    img.src = src;
-    slidesContainer.appendChild(img);
-  });
+/* Arrow Controls */
+function slideLeft() {
+  scrollAmount -= slideWidth;
+  track.style.transform =
+    "translateX(-" + scrollAmount + "px)";
 }
 
-/* Auto Slide Function */
-function autoSlide() {
-  index++;
+function slideRight() {
+  scrollAmount += slideWidth;
+  track.style.transform =
+    "translateX(-" + scrollAmount + "px)";
+}
 
-  if (index >= images.length) {
-    index = 0;
+/* Auto Scroll */
+function autoScroll() {
+  scrollAmount += 1; // smooth continuous scroll
+
+  /* Reset for infinite loop */
+  if (scrollAmount >= track.scrollWidth / 2) {
+    scrollAmount = 0;
   }
 
-  slidesContainer.style.transform =
-    "translateX(-" + index * 100 + "%)";
+  track.style.transform =
+    "translateX(-" + scrollAmount + "px)";
+}
+
+/* Duplicate images for infinite effect */
+function duplicateSlides() {
+  track.innerHTML += track.innerHTML;
 }
 
 /* Init */
 window.onload = function () {
-  loadSlides();
-  setInterval(autoSlide, 3000); // change every 3 sec
+  duplicateSlides();
+  setInterval(autoScroll, 20); // speed
 };
