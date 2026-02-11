@@ -1,24 +1,17 @@
 const track = document.querySelector(".logo-track");
+const left = document.querySelector(".arrow.left");
+const right = document.querySelector(".arrow.right");
 
-let speed = 20;
+/* Speed control */
+left.onclick = () => {
+  track.style.animationDuration = "40s";
+};
 
-/* Change animation speed */
-function setSpeed(value) {
-  track.style.animationDuration = value + "s";
-}
+right.onclick = () => {
+  track.style.animationDuration = "10s";
+};
 
-/* Arrow Controls */
-document.querySelector(".arrow.right")
-  .addEventListener("click", () => {
-    setSpeed(5);   // faster
-  });
-
-document.querySelector(".arrow.left")
-  .addEventListener("click", () => {
-    setSpeed(40);  // slower / reverse feel
-  });
-
-/* Reset speed after click */
+/* Reset speed */
 setInterval(() => {
-  setSpeed(20);
+  track.style.animationDuration = "25s";
 }, 3000);
