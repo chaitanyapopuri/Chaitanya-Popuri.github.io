@@ -1,147 +1,3 @@
-/* Image Gallery */
-.image-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-top: 10px;
-}
-
-/* Slider Container */
-.slider {
-  width: 100%;
-  overflow: hidden;
-  margin-top: 12px;
-  border-radius: 10px;
-}
-
-/* Slides Track */
-.slides {
-  display: flex;
-  transition: transform 0.8s ease-in-out;
-}
-
-/* Images */
-.slides img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-/* Carousel Container */
-.carousel {
-  position: relative;
-  overflow: hidden;
-  margin-top: 14px;
-}
-
-/* Track */
-.carousel-track {
-  display: flex;
-  gap: 12px;
-  transition: transform 0.6s ease-in-out;
-}
-
-/* Images */
-.carousel-track img {
-  width: 260px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  flex-shrink: 0;
-  transition: transform 0.3s;
-}
-
-.carousel-track img:hover {
-  transform: scale(1.05);
-}
-
-/* Arrows */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  font-size: 22px;
-  padding: 8px 12px;
-  cursor: pointer;
-  border-radius: 6px;
-  z-index: 10;
-}
-
-.arrow.left { left: 5px; }
-.arrow.right { right: 5px; }
-
-.arrow:hover {
-  background: rgba(0,0,0,0.8);
-}
-
-/* Carousel Layout */
-.carousel {
-  position: relative;
-  margin-top: 16px;
-}
-
-.carousel-viewport {
-  overflow: hidden;
-  width: 100%;
-}
-
-/* Track */
-.carousel-track {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-
-/* Images */
-.carousel-track img {
-  width: 260px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 12px;
-  flex-shrink: 0;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.carousel-track img:hover {
-  transform: scale(1.08);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-}
-
-/* Arrows */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.55);
-  color: white;
-  border: none;
-  font-size: 24px;
-  padding: 10px 14px;
-  cursor: pointer;
-  border-radius: 8px;
-  z-index: 5;
-  transition: background 0.3s;
-}
-
-.arrow:hover {
-  background: rgba(0,0,0,0.85);
-}
-
-.arrow.left { left: 6px; }
-.arrow.right { right: 6px; }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .carousel-track img {
-    width: 200px;
-    height: 140px;
-  }
-}
-
 /* Slider Container */
 .logo-slider {
   position: relative;
@@ -149,26 +5,23 @@
   margin-top: 16px;
 }
 
-/* Track */
+/* Viewport */
 .logo-track {
   display: flex;
   gap: 18px;
   width: max-content;
-  animation: scrollLeft 20s linear infinite;
+
+  /* AUTO SCROLL */
+  animation: scrollLeft 25s linear infinite;
 }
 
-/* Images */
+/* Images (fixed width) */
 .logo-track img {
-  width: 260px;
+  width: 260px;      /* IMPORTANT */
   height: 180px;
   object-fit: cover;
   border-radius: 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.logo-track img:hover {
-  transform: scale(1.08);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  flex-shrink: 0;
 }
 
 /* Infinite Scroll Animation */
@@ -184,61 +37,4 @@
 /* Pause on Hover */
 .logo-slider:hover .logo-track {
   animation-play-state: paused;
-}
-
-/* Arrows */
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,0,0,0.6);
-  color: white;
-  border: none;
-  font-size: 22px;
-  padding: 10px 14px;
-  cursor: pointer;
-  border-radius: 8px;
-  z-index: 2;
-}
-
-.arrow.left { left: 6px; }
-.arrow.right { right: 6px; }
-
-.arrow:hover {
-  background: rgba(0,0,0,0.85);
-}
-
-
-
-.image-gallery img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.image-gallery img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
-
-/* Pagination */
-.pagination {
-  text-align: center;
-  margin-top: 12px;
-}
-
-.pagination button {
-  padding: 8px 14px;
-  margin: 5px;
-  border: none;
-  background: #0b72ef;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.pagination button:hover {
-  background: #0959c6;
 }
