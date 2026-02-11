@@ -72,41 +72,46 @@ viewport.addEventListener("touchmove", e => {
   track.style.transform =
     `translateX(${walk}px)`;
 });
-const cards = document.querySelectorAll(".cf-card");
-const track1 = document.querySelector(".cf-track1");
-const leftBtn = document.querySelector(".cf-arrow.left");
-const rightBtn = document.querySelector(".cf-arrow.right");
+window.addEventListener("DOMContentLoaded", () => {
 
-let index = 1; // center card
+  const cards = document.querySelectorAll(".cf-card");
+  const track = document.getElementById("cfTrack");
+  const leftBtn = document.querySelector(".cf-arrow.left");
+  const rightBtn = document.querySelector(".cf-arrow.right");
 
-function updateCarousel() {
-  cards.forEach((card, i) => {
-    card.classList.remove("active", "side");
+  if (!cards.length) return; // prevents errors
 
-    if (i === index) {
-      card.classList.add("active");
-    } else {
-      card.classList.add("side");
+  let index = 1;
+
+  function updateCarousel() {
+    cards.forEach((card, i) => {
+      card.classList.remove("active", "side");
+
+      if (i === index) {
+        card.classList.add("active");
+      } else {
+        card.classList.add("side");
+      }
+    });
+
+    const offset = (index - 1) * 250;
+    track.style.transform = `translateX(-${offset}px)`;
+  }
+
+  rightBtn.onclick = () => {
+    if (index < cards.length - 1) {
+      index++;
+      updateCarousel();
     }
-  });
+  };
 
-  const offset = (index - 1) * 250;
-  track.style.transform = `translateX(-${offset}px)`;
-}
+  leftBtn.onclick = () => {
+    if (index > 0) {
+      index--;
+      updateCarousel();
+    }
+  };
 
-/* Arrow Controls */
-
-rightBtn.onclick = () => {
-  index++;
-  if (index >= cards.length) index = cards.length - 1;
   updateCarousel();
-};
 
-leftBtn.onclick = () => {
-  index--;
-  if (index < 0) index = 0;
-  updateCarousel();
-};
-
-/* Init */
-updateCarousel();
+});
