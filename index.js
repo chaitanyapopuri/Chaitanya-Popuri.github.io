@@ -53,22 +53,20 @@
 // });
 
 
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("DOMContentLoaded", () => {
 
   const track = document.getElementById("cfTrack");
   const cards = document.querySelectorAll(".cf-card");
   const leftBtn = document.querySelector(".cf-arrow.left");
   const rightBtn = document.querySelector(".cf-arrow.right");
 
-  if (!track || !cards.length || !leftBtn || !rightBtn) {
-    console.log("Carousel elements missing");
-    return;
-  }
+  if (!track || !cards.length) return;
 
   let index = 0;
-  const cardWidth = 290; // width + margin
+  const cardWidth = 280; // width + gap
 
-  function moveCarousel() {
+  function updateCarousel() {
+
     track.style.transform =
       `translateX(-${index * cardWidth}px)`;
 
@@ -77,30 +75,31 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 
   /* RIGHT */
-  rightBtn.addEventListener("click", function () {
+  rightBtn.addEventListener("click", () => {
     index++;
 
     if (index >= cards.length) {
-      index = 0; // loop
+      index = cards.length - 1;
     }
 
-    moveCarousel();
+    updateCarousel();
   });
 
   /* LEFT */
-  leftBtn.addEventListener("click", function () {
+  leftBtn.addEventListener("click", () => {
     index--;
 
     if (index < 0) {
-      index = cards.length - 1; // loop back
+      index = 0;
     }
 
-    moveCarousel();
+    updateCarousel();
   });
 
-  moveCarousel();
+  updateCarousel();
 
 });
+
 
 
 
