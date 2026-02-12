@@ -113,22 +113,98 @@
 /* ===== ARROWS (VISIBLE FIX) ===== */
 
 
+
+
 .cf-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10;
 
-  width: 42px;
-  height: 42px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
 
   background: white;
+  font-size: 20px;
+
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
 }
+
+/* Glow effect */
+.cf-arrow:hover {
+  background: #0b72ef;
+  color: white;
+  box-shadow:
+    0 0 12px rgba(11,114,239,0.7),
+    0 0 24px rgba(11,114,239,0.5);
+}
+
+.coverflow {
+  position: relative;
+  overflow: visible;
+}
+
+/* Fade overlays */
+.cf-fade {
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Left fade */
+.cf-fade-left {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    #fbfbff,
+    transparent
+  );
+}
+
+/* Right fade */
+.cf-fade-right {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    #fbfbff,
+    transparent
+  );
+}
+
+.cf-card {
+  min-width: 260px;
+  height: 280px;
+  border-radius: 18px;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  transition: transform 0.6s ease,
+              opacity 0.6s ease,
+              filter 0.6s ease;
+
+  opacity: 0.5;
+  filter: blur(2px);
+}
+
+.cf-card.active {
+  transform: scale(1.2);
+  opacity: 1;
+  filter: blur(0);
+  z-index: 2;
+}
+
+
 
 .cf-arrow.left { left: -20px; }
 .cf-arrow.right { right: -20px; }
+
+
+
 
