@@ -1,170 +1,104 @@
-// const track = document.getElementById("logoTrack");
-// const leftArrow = document.querySelector(".arrow.left");
-// const rightArrow = document.querySelector(".arrow.right");
 
-// /* ===== ARROW SPEED CONTROL ===== */
-
-// leftArrow.onclick = () => {
-//   track.style.animationDuration = "40s";
-// };
-
-// rightArrow.onclick = () => {
-//   track.style.animationDuration = "10s";
-// };
-
-// /* Reset speed */
-// setInterval(() => {
-//   track.style.animationDuration = "25s";
-// }, 3000);
-
-// /* ===== REVERSE SCROLL TOGGLE ===== */
-
-// let reversed = false;
-
-// rightArrow.addEventListener("dblclick", () => {
-//   reversed = !reversed;
-
-//   if (reversed) {
-//     track.classList.add("reverse");
-//   } else {
-//     track.classList.remove("reverse");
-//   }
-// });
-
-// /* ===== MOBILE SWIPE / DRAG ===== */
-
-// let isDown = false;
-// let startX;
-// let scrollLeft;
-
-// const viewport = document.querySelector(".logo-viewport");
-
-// viewport.addEventListener("mousedown", e => {
-//   isDown = true;
-//   startX = e.pageX;
-// });
-
-// viewport.addEventListener("mouseleave", () => {
-//   isDown = false;
-// });
-
-// viewport.addEventListener("mouseup", () => {
-//   isDown = false;
-// });
-
-// viewport.addEventListener("mousemove", e => {
-//   if (!isDown) return;
-
-//   const walk = (e.pageX - startX) * 2;
-//   track.style.animationPlayState = "paused";
-//   track.style.transform =
-//     `translateX(${walk}px)`;
-// });
-
-// /* Touch support */
-// viewport.addEventListener("touchstart", e => {
-//   startX = e.touches[0].pageX;
-// });
-
-// viewport.addEventListener("touchmove", e => {
-//   const walk = e.touches[0].pageX - startX;
-//   track.style.animationPlayState = "paused";
-//   track.style.transform =
-//     `translateX(${walk}px)`;
-// });
 // window.addEventListener("DOMContentLoaded", () => {
 
-//   const cards = document.querySelectorAll(".cf-card");
 //   const track = document.getElementById("cfTrack");
+//   const cards = document.querySelectorAll(".cf-card");
 //   const leftBtn = document.querySelector(".cf-arrow.left");
 //   const rightBtn = document.querySelector(".cf-arrow.right");
 
-//   if (!cards.length) return; // prevents errors
+//   if (!track || !cards.length) return;
 
-//   let index = 1;
+//   let index = Math.floor(cards.length / 2); // start center
 
 //   function updateCarousel() {
+
 //     cards.forEach((card, i) => {
-//       card.classList.remove("active", "side");
+//       card.classList.remove("active");
 
 //       if (i === index) {
 //         card.classList.add("active");
-//       } else {
-//         card.classList.add("side");
 //       }
 //     });
 
-//     const offset = (index - 1) * 250;
+//     const cardWidth = 260; // card + margin approx
+//     const offset = (index * cardWidth) - (track.parentElement.offsetWidth / 2) + (cardWidth / 2);
+
 //     track.style.transform = `translateX(-${offset}px)`;
 //   }
 
-//   rightBtn.onclick = () => {
-//     if (index < cards.length - 1) {
-//       index++;
-//       updateCarousel();
-//     }
-//   };
+//   /* ===== RIGHT ARROW ===== */
+//   rightBtn.addEventListener("click", () => {
+//     index++;
 
-//   leftBtn.onclick = () => {
-//     if (index > 0) {
-//       index--;
-//       updateCarousel();
+//     if (index >= cards.length) {
+//       index = 0; // loop
 //     }
-//   };
+
+//     updateCarousel();
+//   });
+
+//   /* ===== LEFT ARROW ===== */
+//   leftBtn.addEventListener("click", () => {
+//     index--;
+
+//     if (index < 0) {
+//       index = cards.length - 1; // loop back
+//     }
+
+//     updateCarousel();
+//   });
 
 //   updateCarousel();
 
 // });
-window.addEventListener("DOMContentLoaded", () => {
+
+
+window.addEventListener("DOMContentLoaded", function () {
 
   const track = document.getElementById("cfTrack");
   const cards = document.querySelectorAll(".cf-card");
   const leftBtn = document.querySelector(".cf-arrow.left");
   const rightBtn = document.querySelector(".cf-arrow.right");
 
-  if (!track || !cards.length) return;
-
-  let index = Math.floor(cards.length / 2); // start center
-
-  function updateCarousel() {
-
-    cards.forEach((card, i) => {
-      card.classList.remove("active");
-
-      if (i === index) {
-        card.classList.add("active");
-      }
-    });
-
-    const cardWidth = 260; // card + margin approx
-    const offset = (index * cardWidth) - (track.parentElement.offsetWidth / 2) + (cardWidth / 2);
-
-    track.style.transform = `translateX(-${offset}px)`;
+  if (!track || !cards.length || !leftBtn || !rightBtn) {
+    console.log("Carousel elements missing");
+    return;
   }
 
-  /* ===== RIGHT ARROW ===== */
-  rightBtn.addEventListener("click", () => {
+  let index = 0;
+  const cardWidth = 290; // width + margin
+
+  function moveCarousel() {
+    track.style.transform =
+      `translateX(-${index * cardWidth}px)`;
+
+    cards.forEach(card => card.classList.remove("active"));
+    cards[index].classList.add("active");
+  }
+
+  /* RIGHT */
+  rightBtn.addEventListener("click", function () {
     index++;
 
     if (index >= cards.length) {
       index = 0; // loop
     }
 
-    updateCarousel();
+    moveCarousel();
   });
 
-  /* ===== LEFT ARROW ===== */
-  leftBtn.addEventListener("click", () => {
+  /* LEFT */
+  leftBtn.addEventListener("click", function () {
     index--;
 
     if (index < 0) {
       index = cards.length - 1; // loop back
     }
 
-    updateCarousel();
+    moveCarousel();
   });
 
-  updateCarousel();
+  moveCarousel();
 
 });
 
