@@ -115,7 +115,6 @@
 //   updateCarousel();
 
 // });
-
 window.addEventListener("DOMContentLoaded", () => {
 
   const track = document.getElementById("cfTrack");
@@ -123,9 +122,9 @@ window.addEventListener("DOMContentLoaded", () => {
   const leftBtn = document.querySelector(".cf-arrow.left");
   const rightBtn = document.querySelector(".cf-arrow.right");
 
-  if (!track) return;
+  if (!track || !cards.length) return;
 
-  let index = 1;
+  let index = Math.floor(cards.length / 2); // start center
 
   function updateCarousel() {
 
@@ -137,26 +136,37 @@ window.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    const offset = (index - 1) * 260;
+    const cardWidth = 260; // card + margin approx
+    const offset = (index * cardWidth) - (track.parentElement.offsetWidth / 2) + (cardWidth / 2);
+
     track.style.transform = `translateX(-${offset}px)`;
   }
 
-  /* Arrows */
-
-  rightBtn.onclick = () => {
+  /* ===== RIGHT ARROW ===== */
+  rightBtn.addEventListener("click", () => {
     index++;
-    if (index >= cards.length) index = cards.length - 1;
-    updateCarousel();
-  };
 
-  leftBtn.onclick = () => {
-    index--;
-    if (index < 0) index = 0;
+    if (index >= cards.length) {
+      index = 0; // loop
+    }
+
     updateCarousel();
-  };
+  });
+
+  /* ===== LEFT ARROW ===== */
+  leftBtn.addEventListener("click", () => {
+    index--;
+
+    if (index < 0) {
+      index = cards.length - 1; // loop back
+    }
+
+    updateCarousel();
+  });
 
   updateCarousel();
 
 });
+
 
 
