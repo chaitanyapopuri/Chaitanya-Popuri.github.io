@@ -18,19 +18,28 @@
 
 /* =====Images ===== */
 /* ===== AUTO SCROLL SLIDER ===== */
+/* ===== IMAGE COMPONENT CONTAINER ===== */
+
+.image-card {
+  overflow: hidden;          /* clips slider inside card */
+}
+
+/* Slider viewport */
 .img-slider {
-  overflow: hidden;
   width: 100%;
+  overflow: hidden;          /* main clipping layer */
   position: relative;
 }
 
+/* Track (wide for animation) */
 .img-track {
   display: flex;
   gap: 16px;
-  width: max-content;
+  width: max-content;        /* prevents shrink */
   animation: imgScroll 20s linear infinite;
 }
 
+/* Images */
 .img-track img {
   width: 260px;
   height: 180px;
@@ -39,9 +48,19 @@
   flex-shrink: 0;
 }
 
+/* Animation */
 @keyframes imgScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause on hover */
+.img-slider:hover .img-track {
+  animation-play-state: paused;
 }
 
 
