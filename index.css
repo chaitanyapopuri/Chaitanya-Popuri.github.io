@@ -18,6 +18,9 @@
 
 /* =====Images ===== */
 /* ===== AUTO SCROLL SLIDER ===== */
+<style>
+
+/* ===== AUTO IMAGE SCROLLER ===== */
 
 .img-slider {
   overflow: hidden;
@@ -28,7 +31,11 @@
 .img-track {
   display: flex;
   gap: 16px;
+
+  /* IMPORTANT WIDTH */
   width: calc(260px * 8);
+
+  /* AUTO SCROLL */
   animation: imgScroll 20s linear infinite;
 }
 
@@ -41,14 +48,21 @@
 
 /* Animation */
 @keyframes imgScroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(calc(-260px * 4)); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-260px * 4));
+  }
 }
 
 /* Pause on hover */
 .img-slider:hover .img-track {
   animation-play-state: paused;
 }
+
+</style>
+
 
 
 /* ===== Animation CSS ===== */
