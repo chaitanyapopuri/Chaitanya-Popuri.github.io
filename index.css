@@ -112,31 +112,23 @@
 
 /* ===== ARROWS (VISIBLE FIX) ===== */
 
+
 .cf-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 10;
 
   width: 42px;
   height: 42px;
-
   border-radius: 50%;
   border: none;
   cursor: pointer;
 
-  background: rgba(255,255,255,0.95);
+  background: white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-
-  font-size: 20px;
-  z-index: 10;          /* IMPORTANT */
 }
 
-/* Left arrow */
-.cf-arrow.left {
-  left: -10px;          /* pulls outside viewport */
-}
+.cf-arrow.left { left: -20px; }
+.cf-arrow.right { right: -20px; }
 
-/* Right arrow */
-.cf-arrow.right {
-  right: -10px;
-}
